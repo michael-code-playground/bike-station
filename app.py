@@ -5,6 +5,21 @@ import json
 import pydeck
 from station_status import *
 
+def calculate_color(row):
+    base = row["capacity"]
+    percentage = (row["bikes"] + row["ebikes"] + row["scooters"]) / base * 100  
+
+    # Assign color based on percentage thresholds
+    if percentage > 50:
+        return [0, 255, 0]    # Green
+    elif percentage < 50:
+        return [255, 165, 0]  # Orange
+    elif percentage == 0:
+        return [255, 0, 0]    # Red
+
+
+
+
 url = "https://gbfs.lyft.com/gbfs/2.3/chi/en/station_information.json"
 response = requests.get(url)
 data = response.json()
@@ -21,7 +36,7 @@ status_data = status()
 df2 = pd.DataFrame(status_data)  
 
 data_frame = df1.merge(df2, on="station_id", how="left")        
-
+data_frame["color"] = data_frame.apply(calculate_color, axis=1)
 map_data = pd.DataFrame(data_frame)
 
 point_layer = pydeck.Layer(
@@ -29,7 +44,8 @@ point_layer = pydeck.Layer(
     data=map_data,
     id="Stations",
     get_position=["lon", "lat"],
-    get_color="[255, 75, 75]",
+    #get_color="[255, 75, 75]",
+    get_color = "color",
     pickable=True,
     auto_highlight=True,
     get_radius="100",
