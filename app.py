@@ -54,7 +54,7 @@ point_layer = pydeck.Layer(
 view_state=pydeck.ViewState(
         latitude=map_data["lat"].mean(), 
         longitude=map_data["lon"].mean(),
-        zoom=50,
+        zoom=10,
         pitch=0,
     )
 
