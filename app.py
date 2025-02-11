@@ -45,7 +45,6 @@ point_layer = pydeck.Layer(
     data=map_data,
     id="Stations",
     get_position=["lon", "lat"],
-    #get_color="[255, 75, 75]",
     get_color = "color",
     pickable=True,
     auto_highlight=True,
@@ -55,7 +54,7 @@ point_layer = pydeck.Layer(
 view_state=pydeck.ViewState(
         latitude=map_data["lat"].mean(), 
         longitude=map_data["lon"].mean(),
-        zoom=5,
+        zoom=50,
         pitch=0,
     )
 
