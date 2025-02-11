@@ -72,8 +72,8 @@ event = st.pydeck_chart(chart, on_select="rerun", selection_mode="multi-object")
 event.selection
 
 option = st.selectbox(
-    "How would you like to be contacted?",
-    ("Email", "Home phone", "Mobile phone"),
+    "Detailed overview, sort by:",
+    ("Availability", ""),
     index=None,
-    placeholder="Select contact method...",
+    placeholder="Select filtering option...",
 )
