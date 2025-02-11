@@ -70,3 +70,10 @@ chart = pydeck.Deck(
 event = st.pydeck_chart(chart, on_select="rerun", selection_mode="multi-object")
 
 event.selection
+
+option = st.selectbox(
+    "How would you like to be contacted?",
+    ("Email", "Home phone", "Mobile phone"),
+    index=None,
+    placeholder="Select contact method...",
+)
