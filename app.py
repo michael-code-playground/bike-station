@@ -8,14 +8,15 @@ from station_status import *
 def calculate_color(row):
     base = row["capacity"]
     percentage = (row["bikes"] + row["ebikes"] + row["scooters"]) / base * 100  
-
+    
     # Assign color based on percentage thresholds
     if percentage > 50:
         return [0, 255, 0]    # Green
+    elif int(percentage) == 0:
+        return [255, 0, 0]    # Red
     elif percentage < 50:
         return [255, 165, 0]  # Orange
-    elif percentage == 0:
-        return [255, 0, 0]    # Red
+    
 
 
 
