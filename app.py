@@ -77,3 +77,5 @@ option = st.selectbox(
     index=None,
     placeholder="Select filtering option...",
 )
+
+st.dataframe(map_data)
