@@ -133,12 +133,15 @@ if option == "Availability":
 )
     
 elif option == "Station name":
-    station_list = st.selectbox(
+    station = st.selectbox(
     "Enter your area:",
     (map_data["name"]),
     index=None,
     placeholder="Select filtering option...",
 )
+    selected_station = map_data[(map_data["name"] == station)]
+    if station is not None:
+        st.dataframe(selected_station, column_config={"color" :None, "station_id" :None,"lat": None, "lon": None, "capacity": None})  
 
 elif option == "Current location":
     location = get_location()
