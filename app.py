@@ -129,7 +129,7 @@ option = st.selectbox(
 if option == "Availability":
     st.dataframe(
     map_data.assign(percentage=(map_data["bikes"] + map_data["ebikes"] + map_data["scooters"]) / map_data["capacity"] * 100)
-    .sort_values(by="percentage", ascending=False), column_config={"color" :None, "station_id" :None,"lat": None, "lon": None}
+    .sort_values(by="percentage", ascending=False), column_config={"color" :None, "station_id" :None,"lat": None, "lon": None, "percentage": None}
 )
     
 elif option == "Station name":
