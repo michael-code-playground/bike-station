@@ -152,7 +152,8 @@ elif option == "Current location":
     map_data["distance_km"] = map_data.apply(lambda row: geodesic((row["lat"], row["lon"]), user_location).km, axis=1)
 
     #filtered_stations = map_data[(map_data["lat"] == lat) & (map_data["lon"] == lng)]
-    filtered_stations = (map_data[map_data["distance_km"] <= 1].sort_values(by="distance_km", ascending=True))
+    user_distance = st.slider("Specify the desired distance?", 0, 20)
+    filtered_stations = (map_data[map_data["distance_km"] <= user_distance].sort_values(by="distance_km", ascending=True))
     st.dataframe(filtered_stations, column_config={"color" :None, "station_id" :None,"lat": None, "lon": None, "capacity": None})
 
 else:
